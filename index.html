@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Image Compressor Online – Compress Images Safely</title>
+<meta name="description" content="Compress images online for free without losing quality. Fast, secure, browser-based image compressor with no file uploads.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== Navigation Bar ===== */
+.navbar {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 22px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.navbar nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar nav a {
+    margin: 0 10px;
+  }
+}
+
+/* ===== Base ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2f7, #f9fbfd);
+  color: #333;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+header p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== Tool Section ===== */
+.tool-title {
+  font-size: 24px;
+  color: #0d6efd;
+  margin-top: 0;
+}
+
+.tool-desc {
+  color: #555;
+  line-height: 1.6;
+}
+
+input[type="file"] {
+  width: 100%;
+  border: 2px dashed #d0d7e2;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #0d6efd;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 22px;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 8px 18px rgba(13,110,253,0.3);
+}
+
+#download {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px;
+  background: #198754;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== Features ===== */
+.features {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  background: #f8fafc;
+  padding: 22px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.feature h4 {
+  margin-bottom: 8px;
+  color: #0d6efd;
+}
+
+/* ===== Tools Link ===== */
+.tools-link {
+  display: block;
+  text-align: center;
+  margin-top: 35px;
+  font-weight: 600;
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 60px;
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+footer a {
+  color: #0d6efd;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+    <div class="navbar">
+  Image Compressor
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Tools</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+
+<header>
+  <h1>Free Image Compressor Online</h1>
+  <p>Compress images instantly — no uploads, no quality loss</p>
+</header>
+
+<div class="container">
+  <h2 class="tool-title">Compress Image</h2>
+  <p class="tool-desc">
+    Reduce image file size directly in your browser.  
+    Your images are never uploaded to any server, ensuring complete privacy.
+  </p>
+
+  <input type="file" id="upload" accept="image/*">
+
+  <label>Compression Quality: <span id="qv">70</span>%</label>
+  <input type="range" id="quality" min="10" max="90" value="70">
+
+  <button onclick="compress()">Compress Image</button>
+
+  <a id="download" style="display:none"></a>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="feature">
+      <h4>🔒 100% Secure</h4>
+      <p>No file uploads. Everything runs in your browser.</p>
+    </div>
+    <div class="feature">
+      <h4>⚡ Fast Processing</h4>
+      <p>Instant compression using modern JavaScript.</p>
+    </div>
+    <div class="feature">
+      <h4>📱 Mobile Friendly</h4>
+      <p>Works perfectly on phones and tablets.</p>
+    </div>
+  </div>
+
+  <a class="tools-link" href="tools.html">View Other Free Tools →</a>
+</div>
+
+<footer>
+  <p>
+    <a href="privacy.html">Privacy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="disclaimer.html">Disclaimer</a>
+  </p>
+  <p>© 2026 Free Image Tools</p>
+</footer>
+
+<script>
+document.getElementById("quality").oninput = () =>
+  qv.innerText = quality.value;
+
+function compress(){
+  const file = upload.files[0];
+  if(!file) return alert("Please upload an image");
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.src = e.target.result;
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        download.href = url;
+        download.download = "compressed.jpg";
+        download.innerText = "Download Compressed Image";
+        download.style.display = "inline-block";
+      }, "image/jpeg", quality.value / 100);
+    };
+  };
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
