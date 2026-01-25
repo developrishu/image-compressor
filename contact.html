@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
 <meta charset="UTF-8">
 <title>Contact Us – Image Compressor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,22 +32,46 @@ footer{text-align:center;padding:20px;color:#666;font-size:14px}
 <h1>Contact Us</h1>
 
 <p>If you have any questions, feedback, or issues, feel free to contact us.</p>
+<p id="success-msg" style="display:none;color:green;font-weight:600;">
+  ✅ Your message has been sent successfully.
+</p>
 
-<form>
-  <input type="text" placeholder="Your Name" required>
-  <input type="email" placeholder="Your Email" required>
-  <textarea rows="4" placeholder="Your Message"></textarea>
+<form action="https://api.web3forms.com/submit" method="POST">
+
+  <!-- Web3Forms Access Key -->
+  <input type="hidden" name="access_key" value="67d7d771-0c74-40d1-971b-6262705ea885">
+
+  <!-- Required for spam protection -->
+  <input type="hidden" name="subject" value="New Contact Form Submission">
+  <input type="hidden" name="from_name" value="Image Compressor Website">
+
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+
+  <!-- Honeypot (anti-spam, invisible) -->
+  <input type="checkbox" name="botcheck" style="display:none">
+
   <button type="submit">Send Message</button>
+
 </form>
 
-<p style="margin-top:15px;">Email: <b>codecrashcash@gmail.com</b></p>
+
+
 </div>
 
 <footer>© 2026 Free Image Tools</footer>
+<script>
+const form = document.querySelector("form");
+form.addEventListener("submit", () => {
+  setTimeout(() => {
+    document.getElementById("success-msg").style.display = "block";
+    form.reset();
+  }, 1000);
+});
+</script>
 
 </body>
 </html>
-
-
-
-
